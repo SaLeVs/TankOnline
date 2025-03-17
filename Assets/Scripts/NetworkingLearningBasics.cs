@@ -28,4 +28,11 @@ public class NetworkingLearningBasics : MonoBehaviour
     // Cons:
     // price, but we can use the UGS (Unity Game Server) for free
     // Complexity, is more complex to use than the self hosted server
+
+
+    // ------------------ NetworkManager --------------------
+
+    // We create a object called NetworkManager and put the script NetworkManager in it
+    // All of objects that we want to synce, we need to put the NetworkObject
+
 }
