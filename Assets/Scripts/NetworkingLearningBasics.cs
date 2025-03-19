@@ -35,4 +35,9 @@ public class NetworkingLearningBasics : MonoBehaviour
     // We create a object called NetworkManager and put the script NetworkManager in it
     // All of objects that we want to synce, we need to put the NetworkObject
 
+
+    // ------------------ NetworkObject --------------------
+    // We put the network object in the root, and all of the children will be syncronized
+    // network transform, we will put and mark only what we want to syncronize, for example, if a object is not moving and he is a child of a object that is moving, we dont need to syncronize the object that is not moving
+
 }
