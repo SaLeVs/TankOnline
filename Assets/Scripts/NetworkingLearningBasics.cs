@@ -43,5 +43,6 @@ public class NetworkingLearningBasics : MonoBehaviour
 
     // ------------------ All learnings --------------------
     // When we change the object of shorting layer, we need to change the layer of the light too
-
+    // Create a scriptable object for the input can be good, in input class we have a reference for the interface, and we can implement the interface in the scriptable object
+    //      in this scriptable object we need to create a void OnEnable for active the inputs
 }
