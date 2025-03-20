@@ -40,4 +40,8 @@ public class NetworkingLearningBasics : MonoBehaviour
     // We put the network object in the root, and all of the children will be syncronized
     // network transform, we will put and mark only what we want to syncronize, for example, if a object is not moving and he is a child of a object that is moving, we dont need to syncronize the object that is not moving
 
+
+    // ------------------ All learnings --------------------
+    // When we change the object of shorting layer, we need to change the layer of the light too
+
 }
