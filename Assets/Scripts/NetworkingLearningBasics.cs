@@ -39,6 +39,10 @@ public class NetworkingLearningBasics : MonoBehaviour
     // ------------------ NetworkObject --------------------
     // We put the network object in the root, and all of the children will be syncronized
     // network transform, we will put and mark only what we want to syncronize, for example, if a object is not moving and he is a child of a object that is moving, we dont need to syncronize the object that is not moving
+    // Basically, the client dont have the authority for move objects for example, we need to specify this
+    // This process is not automatic, we need to specify what we want to syncronize
+    // we send a info for the server and server process and send back what happen for client
+    // when you give the authority for client of something, you are giving a opportunity for cheat
 
 
     // ------------------ All learnings --------------------
