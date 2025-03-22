@@ -43,10 +43,13 @@ public class NetworkingLearningBasics : MonoBehaviour
     // This process is not automatic, we need to specify what we want to syncronize
     // we send a info for the server and server process and send back what happen for client
     // when you give the authority for client of something, you are giving a opportunity for cheat
+    // every object will enhit the network behaviour
 
 
     // ------------------ All learnings --------------------
     // When we change the object of shorting layer, we need to change the layer of the light too
     // Create a scriptable object for the input can be good, in input class we have a reference for the interface, and we can implement the interface in the scriptable object
     //      in this scriptable object we need to create a void OnEnable for active the inputs
+    // all think what data you want, for example, if you want to move the object, you only need the transform, not the game object
+    // never doubt your ability 
 }
