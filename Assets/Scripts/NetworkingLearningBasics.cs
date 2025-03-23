@@ -34,6 +34,7 @@ public class NetworkingLearningBasics : MonoBehaviour
 
     // We create a object called NetworkManager and put the script NetworkManager in it
     // All of objects that we want to synce, we need to put the NetworkObject
+    // we have a list of prefabs, and we need to put all of the prefabs that we want to syncronize, but for some reason in unity 6 this is automatic
 
 
     // ------------------ NetworkObject --------------------
