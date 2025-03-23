@@ -11,6 +11,7 @@ public class ProjectileLauncher : NetworkBehaviour
     [SerializeField] private GameObject clientProjectilePrefab;
     [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private Collider2D playerCollider;
+    [SerializeField] private CoinWallet coinWallet;
 
     [Space(2.5f)]
 
@@ -18,9 +19,10 @@ public class ProjectileLauncher : NetworkBehaviour
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float fireRate;
     [SerializeField] private float muzzleFlashDuration;
+    [SerializeField] private int costToFire;
 
     private bool shouldFire;
-    private float previousFireTime;
+    private float timer;
     private float muzzleFlashTimer;
 
 
@@ -44,14 +46,21 @@ public class ProjectileLauncher : NetworkBehaviour
 
         if(!IsOwner) return;
 
-        if(!shouldFire) return;
+        if(timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        
+        if (!shouldFire) return;
 
-        if(Time.time < (1 / fireRate) + previousFireTime) return;
+        if(timer > 0) return;
+
+        if (coinWallet.TotalCoins.Value <= costToFire) return;
 
         PrimaryFireServerRpc(projectileSpawnPoint.position, projectileSpawnPoint.up);
         SpawnDummyProjectile(projectileSpawnPoint.position, projectileSpawnPoint.up);
 
-        previousFireTime = Time.time;
+        timer = 1 / fireRate;
     }
 
     private void InputReader_LaunchProjectile(bool shouldFire)
@@ -59,6 +68,7 @@ public class ProjectileLauncher : NetworkBehaviour
         this.shouldFire = shouldFire;
     }
 
+    
 
     private void SpawnDummyProjectile(Vector3 spwanPos, Vector3 direction)
     {
@@ -80,6 +90,10 @@ public class ProjectileLauncher : NetworkBehaviour
     [ServerRpc]
     private void PrimaryFireServerRpc(Vector3 spwanPos, Vector3 direction)
     {
+        if (coinWallet.TotalCoins.Value <= costToFire) return;
+
+        coinWallet.SpendCoins(costToFire);
+
         GameObject projectileInstance = Instantiate(serverProjectilePrefab, spwanPos, Quaternion.identity);
         projectileInstance.transform.up = direction;
 
