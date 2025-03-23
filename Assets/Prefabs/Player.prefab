@@ -79,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5412658587437275181}
   - component: {fileID: 1578319821979965669}
-  - component: {fileID: -3531636351004483920}
+  - component: {fileID: 5316854044125520505}
   - component: {fileID: 3522012355980436765}
   - component: {fileID: 3596997903779182848}
   - component: {fileID: 1615798149927825205}
@@ -133,7 +133,7 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!114 &-3531636351004483920
+--- !u!114 &5316854044125520505
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,11 +142,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3502829949800149640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 36e0b3f1f886de44ea52488bbb5bddc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
+  NetworkTransformExpanded: 1
   AuthorityMode: 0
   TickSyncChildren: 0
   UseUnreliableDeltas: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3502829949800149640}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 569373a9a58d3d44d81f30fb794b165a, type: 3}
   m_Name: 
