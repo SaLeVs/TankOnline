@@ -52,4 +52,5 @@ public class NetworkingLearningBasics : MonoBehaviour
     //      in this scriptable object we need to create a void OnEnable for active the inputs
     // all think what data you want, for example, if you want to move the object, you only need the transform, not the game object
     // never doubt your ability 
+    // to deal with the collision, is better make this on editor side, not on script
 }
