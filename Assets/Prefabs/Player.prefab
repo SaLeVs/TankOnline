@@ -80,9 +80,10 @@ GameObject:
   - component: {fileID: 5412658587437275181}
   - component: {fileID: 1578319821979965669}
   - component: {fileID: -3531636351004483920}
+  - component: {fileID: 3522012355980436765}
   - component: {fileID: 3596997903779182848}
   - component: {fileID: 1615798149927825205}
-  - component: {fileID: 3522012355980436765}
+  - component: {fileID: 5944461101732709346}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -168,6 +169,33 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!50 &3522012355980436765
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502829949800149640}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &3596997903779182848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,33 +229,24 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   inputReader: {fileID: 11400000, guid: c2518898b7c119e4bad10dd70a029a4c, type: 2}
   turretTransform: {fileID: 2341818615247639528}
---- !u!50 &3522012355980436765
-Rigidbody2D:
-  serializedVersion: 5
+--- !u!114 &5944461101732709346
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3502829949800149640}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569373a9a58d3d44d81f30fb794b165a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  inputReader: {fileID: 11400000, guid: c2518898b7c119e4bad10dd70a029a4c, type: 2}
+  projectileSpawnPoint: {fileID: 431550401096774107}
+  serverProjectilePrefab: {fileID: 139533304861813274, guid: 931a226d9fe8f0649921b84c3eba392f, type: 3}
+  clientProjectilePrefab: {fileID: 9183457280233216260, guid: 9416c4b141c8dd243a063cf7e9b20c65, type: 3}
+  projectileSpeed: 30
 --- !u!1 &5440637295358300102
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +506,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.75, y: 2.05}
   m_EdgeRadius: 0
+--- !u!1 &5584707597679471088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 431550401096774107}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &431550401096774107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5584707597679471088}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5800372095059883348}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8192181284481695950
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +566,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.425, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 431550401096774107}
   m_Father: {fileID: 2341818615247639528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &402605371066843394

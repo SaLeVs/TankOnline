@@ -53,4 +53,5 @@ public class NetworkingLearningBasics : MonoBehaviour
     // all think what data you want, for example, if you want to move the object, you only need the transform, not the game object
     // never doubt your ability 
     // to deal with the collision, is better make this on editor side, not on script
+    // make sure to disable all layers on edit physcs
 }
