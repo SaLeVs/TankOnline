@@ -44,6 +44,7 @@ public class NetworkingLearningBasics : MonoBehaviour
     // we send a info for the server and server process and send back what happen for client
     // when you give the authority for client of something, you are giving a opportunity for cheat
     // every object will enhit the network behaviour
+    // we use a netowrk variable when we need that server control, but clients also need to know
 
 
     // ------------------ All learnings --------------------
@@ -55,4 +56,5 @@ public class NetworkingLearningBasics : MonoBehaviour
     // to deal with the collision, is better make this on editor side, not on script
     // make sure to disable all layers on edit physcs
     // everytime you use a clamp, you need to store the value in a variable
+
 }
