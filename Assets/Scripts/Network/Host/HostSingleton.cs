@@ -32,6 +32,6 @@ public class HostSingleton : MonoBehaviour
 
     public void CreateHost()
     {
-        gameManager = new HostGameManager();
+        gameManager = new HostGameManager();  
     }
 }

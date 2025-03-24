@@ -25,7 +25,7 @@ public class ApplicationController : MonoBehaviour
            ClientSingleton clientSingleton = Instantiate(clientPrefab);
            await clientSingleton.CreateClient();
 
-            HostSingleton hostSingleton = new HostSingleton();
+            HostSingleton hostSingleton = Instantiate(hostPrefab);
             hostSingleton.CreateHost();
 
             // Go to main menu
