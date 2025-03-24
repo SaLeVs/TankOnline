@@ -30,7 +30,6 @@ public class ClientSingleton : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-        
     }
 
 
