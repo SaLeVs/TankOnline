@@ -25,7 +25,6 @@ public class NetworkClient
         if(SceneManager.GetActiveScene().name != MENU_NAME)
         {
             SceneManager.LoadScene(MENU_NAME);
-            Debug.Log("Disconnected from server. Returning to menu.");
         }
         
         if(networkManager.IsConnectedClient)
