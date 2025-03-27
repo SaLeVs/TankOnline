@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
 using System.Text;
+using Unity.Services.Authentication;
 
 
 public class HostGameManager
@@ -81,7 +82,8 @@ public class HostGameManager
 
         UserData userData = new UserData
         {
-            userName = PlayerPrefs.GetString(NameSelector.PlayerNameKey, "Mssing name")
+            userName = PlayerPrefs.GetString(NameSelector.PlayerNameKey, "Mssing name"),
+            userAuthId = AuthenticationService.Instance.PlayerId
         };
 
         string payLoad = JsonUtility.ToJson(userData);
