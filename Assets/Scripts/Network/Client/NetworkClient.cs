@@ -19,10 +19,8 @@ public class NetworkClient
 
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
-        if(clientId != 0 && clientId != networkManager.LocalClientId)
-        {
-            return; 
-        }
+        if(clientId != 0 && clientId != networkManager.LocalClientId) { return; }
+        
 
         if(SceneManager.GetActiveScene().name != MENU_NAME)
         {
