@@ -31,10 +31,11 @@ public class NetworkServer : IDisposable
 
     private void NetworkManager_OnServerStarted()
     {
-        networkManager.OnClientConnectedCallback += NetworkManager_OnClientConnectedCallback; 
+        networkManager.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback; 
+        
     }
 
-    private void NetworkManager_OnClientConnectedCallback(ulong clientId)
+    private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
         if (clientIdToAuth.TryGetValue(clientId, out string authId))
         {
@@ -43,12 +44,25 @@ public class NetworkServer : IDisposable
         }
     }
 
+    public UserData GetUserDataByClientId(ulong clientId)
+    {
+       if(clientIdToAuth.TryGetValue(clientId, out string authId))
+       {
+            if (authIdToUserData.TryGetValue(authId, out UserData userData))
+            {
+                return userData;
+            }
+            return null;
+       }
+       return null;
+    }
+
     public void Dispose()
     {
         if(networkManager != null) { return; }
 
         networkManager.ConnectionApprovalCallback -= NetworkManager_ApprovalCheck;
-        networkManager.OnClientConnectedCallback -= NetworkManager_OnClientConnectedCallback;
+        networkManager.OnClientConnectedCallback -= NetworkManager_OnClientDisconnectCallback;
         networkManager.OnServerStarted -= NetworkManager_OnServerStarted;
         
         if(networkManager.IsListening)

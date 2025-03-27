@@ -57,5 +57,5 @@ public class NetworkingLearningBasics : MonoBehaviour
     // to deal with the collision, is better make this on editor side, not on script
     // make sure to disable all layers on edit physcs
     // everytime you use a clamp, you need to store the value in a variable
-
+    // We have to pay attention to create a separe class, off each class make something
 }
