@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5350403102951973853}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6131576530360538250}
+        m_TargetAssemblyTypeName: LobbyItem, Assembly-CSharp
+        m_MethodName: Join
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1790097449974885409
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +554,7 @@ GameObject:
   - component: {fileID: 5497394283179312589}
   - component: {fileID: 7701634795857166067}
   - component: {fileID: 3269287818837441400}
+  - component: {fileID: 6131576530360538250}
   m_Layer: 0
   m_Name: LobbyItem
   m_TagString: Untagged
@@ -609,3 +622,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6131576530360538250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6835747794078386903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d409fa891825c43ad2918247a28cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lobbyNameText: {fileID: 2818420509511835836}
+  lobbyPlayerText: {fileID: 4318735657308940782}
