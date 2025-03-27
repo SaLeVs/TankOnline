@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -29,7 +30,6 @@ public class ClientGameManager
 
     public async Task StartClientAsync(string joinCode)
     {
-
         try
         {
             joinAllocation = await Relay.Instance.JoinAllocationAsync(joinCode);
@@ -44,6 +44,16 @@ public class ClientGameManager
 
         RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
         unityTransport.SetRelayServerData(relayServerData);
+
+        UserData userData = new UserData
+        {
+            userName = PlayerPrefs.GetString(NameSelector.PlayerNameKey, "Mssing name")
+        };
+
+        string payLoad = JsonUtility.ToJson(userData);
+        byte[] payLoadBytes = Encoding.UTF8.GetBytes(payLoad);
+
+        NetworkManager.Singleton.NetworkConfig.ConnectionData = payLoadBytes;
 
         NetworkManager.Singleton.StartClient();
 
