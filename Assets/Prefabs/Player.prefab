@@ -402,6 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   cinemachineCamera: {fileID: 616000636976271322}
+  <Health>k__BackingField: {fileID: 8019412043863840464}
   cameraPriority: 15
   playerName:
     m_InternalValue:

@@ -58,4 +58,9 @@ public class NetworkingLearningBasics : MonoBehaviour
     // make sure to disable all layers on edit physcs
     // everytime you use a clamp, you need to store the value in a variable
     // We have to pay attention to create a separe class, off each class make something
+
+
+    // ------------------ THINGS TO STUDY AFTER COURSE --------------------
+    // Learn more about checks If (isServer), If (isClient), owner etc
+
 }
