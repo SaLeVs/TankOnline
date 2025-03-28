@@ -11,7 +11,7 @@ public class RespawnHandler : NetworkBehaviour
     {
         if (!IsServer) { return; }
 
-        TankPlayer[] players = FindObjectsByType<TankPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        TankPlayer[] players = FindObjectsByType<TankPlayer>(FindObjectsSortMode.None);
 
         foreach(TankPlayer player in players)
         {
