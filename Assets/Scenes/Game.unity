@@ -695,6 +695,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   leaderboardEntityHolder: {fileID: 210844849}
   leaderboardEntityPrefab: {fileID: 7723102182078309891, guid: 09c7b3518242f9b40a4c68f604a65d4e, type: 3}
+  entitiesToDisplay: 9
 --- !u!114 &281360339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,7 +1147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  playerPrefab: {fileID: 1578319821979965669, guid: 96f04fe5260975343ae13e50a719c5dc, type: 3}
+  playerPrefab: {fileID: 6622278022895545987, guid: 96f04fe5260975343ae13e50a719c5dc, type: 3}
+  keptPercentage: 50
 --- !u!4 &508845178
 Transform:
   m_ObjectHideFlags: 0
