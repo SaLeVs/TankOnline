@@ -95,9 +95,22 @@ public class HostGameManager : IDisposable
         NetworkManager.Singleton.NetworkConfig.ConnectionData = payLoadBytes;
 
         NetworkManager.Singleton.StartHost();
+
+        NetworkServer.OnClientLeft += NetworkServer_OnClientLeft;
         NetworkManager.Singleton.SceneManager.LoadScene(GameSceneName, LoadSceneMode.Single);
     }
 
+    private async void NetworkServer_OnClientLeft(string authId)
+    {
+        try
+        {
+            await LobbyService.Instance.RemovePlayerAsync(lobbyId, authId);
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
 
     private IEnumerator HeartBeatLobby(float waitTimeSeconds) // we use this for say to ugs, that the lobby is still active
     {
@@ -110,7 +123,12 @@ public class HostGameManager : IDisposable
         }
     }
 
-    public async void Dispose()
+    public void Dispose()
+    {
+        Shutdown();
+    }
+
+    public async void Shutdown()
     {
         HostSingleton.Instance.StopCoroutine(nameof(HeartBeatLobby));
 
@@ -120,13 +138,15 @@ public class HostGameManager : IDisposable
             {
                 await Lobbies.Instance.DeleteLobbyAsync(lobbyId);
             }
-            catch(LobbyServiceException e)
+            catch (LobbyServiceException e)
             {
                 Debug.Log(e);
             }
 
             lobbyId = string.Empty;
         }
+
+        NetworkServer.OnClientLeft -= NetworkServer_OnClientLeft;
 
         NetworkServer?.Dispose();
     }
