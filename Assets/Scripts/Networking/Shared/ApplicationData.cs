@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Basic launch command processor (Multiplay prefers passing IP and port along)
 /// </summary>
-public class ApplicationData
+public class ApplicationData // Basically we use this class for read the command line arguments and store the values
 {
     /// <summary>
     /// Commands Dictionary

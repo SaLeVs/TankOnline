@@ -62,5 +62,12 @@ public class NetworkingLearningBasics : MonoBehaviour
 
     // ------------------ THINGS TO STUDY AFTER COURSE --------------------
     // Learn more about checks If (isServer), If (isClient), owner etc
+    // What is dispose
+
+
+
+    // ------------------ SERVER THINGS --------------------
+    // In one part of the course, we just import scripts from the Unity Sample
+
 
 }

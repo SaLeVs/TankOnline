@@ -80,7 +80,7 @@ public class MatchplayBackfiller : IDisposable
         localDataDirty = true;
     }
 
-    public int RemovePlayerFromMatch(string userId)
+    public int RemovePlayerFromMatch(string userId) // this is set up for work with teams
     {
         Player playerToRemove = GetPlayerById(userId);
         if (playerToRemove == null)
@@ -96,7 +96,7 @@ public class MatchplayBackfiller : IDisposable
         return MatchPlayerCount;
     }
 
-    public bool NeedsPlayers()
+    public bool NeedsPlayers() // Hekp methods for check
     {
         return MatchPlayerCount < maxPlayers;
     }
@@ -146,6 +146,6 @@ public class MatchplayBackfiller : IDisposable
 
     public void Dispose()
     {
-        _ = StopBackfill();
+        _ = StopBackfill(); // make this we are saying, I know this is async, but I dont care about the result
     }
 }

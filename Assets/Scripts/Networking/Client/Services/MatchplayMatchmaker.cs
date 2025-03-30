@@ -6,7 +6,7 @@ using Unity.Services.Matchmaker;
 using Unity.Services.Matchmaker.Models;
 using UnityEngine;
 
-public enum MatchmakerPollingResult
+public enum MatchmakerPollingResult // handle all matchmaking states
 {
     Success,
     TicketCreationError,
@@ -15,7 +15,7 @@ public enum MatchmakerPollingResult
     MatchAssignmentError
 }
 
-public class MatchmakingResult
+public class MatchmakingResult // store the matchmaking result
 {
     public string ip;
     public int port;

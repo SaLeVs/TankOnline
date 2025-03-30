@@ -6,7 +6,7 @@ using Unity.Services.Matchmaker.Models;
 using Unity.Services.Multiplay;
 using UnityEngine;
 
-public class MultiplayAllocationService : IDisposable
+public class MultiplayAllocationService : IDisposable // this class is a way to set up the server, we will mention and use these functions, its a default way to set up the server
 {
     private IMultiplayService multiplayService;
     private MultiplayEventCallbacks serverCallbacks;
@@ -43,7 +43,7 @@ public class MultiplayAllocationService : IDisposable
         return matchmakingPayload;
     }
 
-    private async Task<string> AwaitAllocationID()
+    private async Task<string> AwaitAllocationID() // all calls will call this function
     {
         ServerConfig config = multiplayService.ServerConfig;
         Debug.Log($"Awaiting Allocation. Server Config is:\n" +
@@ -86,7 +86,7 @@ public class MultiplayAllocationService : IDisposable
         allocationId = allocation.AllocationId;
     }
 
-    public async Task BeginServerCheck()
+    public async Task BeginServerCheck() // all the data to do with the dashboard and analytics is done here
     {
         if (multiplayService == null) { return; }
 
