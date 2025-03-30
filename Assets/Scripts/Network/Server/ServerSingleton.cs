@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Unity.Services.Core;
 using UnityEngine;
+using Unity.Netcode;
 
 public class ServerSingleton : MonoBehaviour
 {
@@ -37,7 +38,13 @@ public class ServerSingleton : MonoBehaviour
     public async Task CreateServer()
     {
         await UnityServices.InitializeAsync();
-        GameManager = new ServerGameManager();
+        GameManager = new ServerGameManager(
+            ApplicationData.IP(),
+            ApplicationData.Port(),
+            ApplicationData.QPort(),
+            NetworkManager.Singleton
+        );
+        // here we are spawning the server and passing all the data that we need to start the server
     }
 
     private void OnDestroy()
