@@ -6,6 +6,7 @@ public class ApplicationController : MonoBehaviour
 
     [SerializeField] private ClientSingleton clientPrefab;
     [SerializeField] private HostSingleton hostPrefab;
+    [SerializeField] private ServerSingleton serverPrefab;
 
     private async void Start()
     {
@@ -18,11 +19,14 @@ public class ApplicationController : MonoBehaviour
     {
         if(isDedicatedServer)
         {
-            
+            ServerSingleton serverSingleton = Instantiate(serverPrefab); // if we are a dedicated server, we instantiate the server prefab
+            await serverSingleton.CreateServer();
+
+            // Logic for able people to connect to the server
+            await serverSingleton.GameManager.StartGameServerAsync();
         }
         else
         {
-
             HostSingleton hostSingleton = Instantiate(hostPrefab);
             hostSingleton.CreateHost();
 

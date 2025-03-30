@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Unity.Services.Core;
 using UnityEngine;
 
 public class ServerSingleton : MonoBehaviour
@@ -33,8 +34,9 @@ public class ServerSingleton : MonoBehaviour
     }
 
 
-    public void CreateServer()
+    public async Task CreateServer()
     {
+        await UnityServices.InitializeAsync();
         GameManager = new ServerGameManager();
     }
 
