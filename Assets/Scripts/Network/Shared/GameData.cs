@@ -30,8 +30,14 @@ public class GameInfo
     public Map map;
     public GameMode gameMode;
     public GameQueue gameQueue;
+
     public string ToMultiplayQueue()
     {
-        return $"";
+        return gameQueue switch
+        {
+            GameQueue.Solo => "solo-queue",
+            GameQueue.Team => "team-queue",
+            _ => "solo-queue" // if is invalid we return solo queue
+        }; 
     }
 }

@@ -17,15 +17,23 @@ public class ClientGameManager : IDisposable
     private JoinAllocation joinAllocation;
 
     private NetworkClient networkClient;
+    private MatchplayMatchmaker matchmaker;
+    private UserData userData;
 
     public async Task<bool> InitAsync()
     {
         await UnityServices.InitializeAsync();
         networkClient = new NetworkClient(NetworkManager.Singleton);
+        matchmaker = new MatchplayMatchmaker();
         AuthState authState = await AuthenticationWrapper.DoAuth();
 
         if (authState == AuthState.Authenticated)
         {
+            userData = new UserData
+            {
+                userName = PlayerPrefs.GetString(NameSelector.PlayerNameKey, "Mssing name"),
+                userAuthId = AuthenticationService.Instance.PlayerId
+            };
             return true;
         }
 
@@ -49,11 +57,7 @@ public class ClientGameManager : IDisposable
         RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
         unityTransport.SetRelayServerData(relayServerData);
 
-        UserData userData = new UserData
-        {
-            userName = PlayerPrefs.GetString(NameSelector.PlayerNameKey, "Mssing name"),
-            userAuthId = AuthenticationService.Instance.PlayerId
-        };
+        
 
         string payLoad = JsonUtility.ToJson(userData);
         byte[] payLoadBytes = Encoding.UTF8.GetBytes(payLoad);
@@ -67,6 +71,18 @@ public class ClientGameManager : IDisposable
     public void GoToMenu()
     {
         SceneManager.LoadScene(MenuSceneName);
+    }
+
+    private async Task<MatchmakerPollingResult> GetMatchAsync()
+    {
+        MatchmakingResult matchmakingResult = await matchmaker.Matchmake(userData);
+        
+        if(matchmakingResult.result == MatchmakerPollingResult.Success)
+        {
+            // Connect to the server
+        }
+
+        return matchmakingResult.result;
     }
 
     public void Disconnected()
