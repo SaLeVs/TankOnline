@@ -11,6 +11,7 @@ public class TankPlayer : NetworkBehaviour
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public CoinWallet Wallet { get; private set; }
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Texture2D crosshair;
 
     [Header("Settings")]
     [SerializeField] private int cameraPriority = 15;
@@ -37,6 +38,7 @@ public class TankPlayer : NetworkBehaviour
         {
             cinemachineCamera.Priority = cameraPriority;
             spriteRenderer.color = myColor;
+            Cursor.SetCursor(crosshair, new Vector2(crosshair.width / 2, crosshair.height / 2), CursorMode.Auto);
         }
     }
 
