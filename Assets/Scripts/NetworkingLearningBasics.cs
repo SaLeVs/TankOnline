@@ -63,7 +63,8 @@ public class NetworkingLearningBasics : MonoBehaviour
     // ------------------ THINGS TO STUDY AFTER COURSE --------------------
     // Learn more about checks If (isServer), If (isClient), owner etc
     // What is dispose
-
+    // Study about backfill
+    // Study about patterns for create multiplayer games
 
 
     // ------------------ SERVER THINGS --------------------
