@@ -40,6 +40,13 @@ public class ClientGameManager : IDisposable
         return false;
     }
 
+    private void StartClient(string ip, int port)
+    {
+        UnityTransport unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+        unityTransport.SetConnectionData(ip, (ushort)port);
+        ConnectClient();
+    }
+
     public async Task StartClientAsync(string joinCode)
     {
         try
@@ -57,15 +64,25 @@ public class ClientGameManager : IDisposable
         RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
         unityTransport.SetRelayServerData(relayServerData);
 
-        
-
+        ConnectClient();
+    }
+    
+    public void ConnectClient()
+    {
         string payLoad = JsonUtility.ToJson(userData);
         byte[] payLoadBytes = Encoding.UTF8.GetBytes(payLoad);
 
         NetworkManager.Singleton.NetworkConfig.ConnectionData = payLoadBytes;
 
         NetworkManager.Singleton.StartClient();
+    }
 
+    public async void MatchmakeAsync(Action<MatchmakerPollingResult> onMatchmakeResponse)
+    {
+        if(matchmaker.IsMatchmaking) { return; }
+
+        MatchmakerPollingResult matchResult = await GetMatchAsync();
+        onMatchmakeResponse?.Invoke(matchResult);
     }
 
     public void GoToMenu()
@@ -79,10 +96,15 @@ public class ClientGameManager : IDisposable
         
         if(matchmakingResult.result == MatchmakerPollingResult.Success)
         {
-            // Connect to the server
+            StartClient(matchmakingResult.ip, matchmakingResult.port);
         }
 
         return matchmakingResult.result;
+    }
+
+    public async Task CancelMatchmaking()
+    {
+       await matchmaker.CancelMatchmaking();
     }
 
     public void Disconnected()
