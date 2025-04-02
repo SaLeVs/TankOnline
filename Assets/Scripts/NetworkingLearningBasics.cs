@@ -70,5 +70,7 @@ public class NetworkingLearningBasics : MonoBehaviour
     // ------------------ SERVER THINGS --------------------
     // In one part of the course, we just import scripts from the Unity Sample
 
+    // ----------------- SOLVING PROBLEMS --------------------
+    // We need to try and reconfig servers on the UGS, because we are having some issues
 
 }
