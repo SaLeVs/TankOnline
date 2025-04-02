@@ -22,7 +22,12 @@ public class ClientGameManager : IDisposable
 
     public async Task<bool> InitAsync()
     {
-        await UnityServices.InitializeAsync();
+        await UnityServices.InitializeAsync(); 
+
+        //InitializationOptions initializationOptions = new InitializationOptions();
+        //initializationOptions.SetProfile(UnityEngine.Random.Range(0, 10000).ToString());
+        //await UnityServices.InitializeAsync(initializationOptions);
+
         networkClient = new NetworkClient(NetworkManager.Singleton);
         matchmaker = new MatchplayMatchmaker();
         AuthState authState = await AuthenticationWrapper.DoAuth();

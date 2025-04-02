@@ -72,5 +72,6 @@ public class NetworkingLearningBasics : MonoBehaviour
 
     // ----------------- SOLVING PROBLEMS --------------------
     // We need to try and reconfig servers on the UGS, because we are having some issues
+    // We solve the problems on UGS, but we need to understand how to do a build on il2cpp  
 
 }

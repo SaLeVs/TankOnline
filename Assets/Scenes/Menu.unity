@@ -1805,6 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a6a2abe7ebfd14ebb4085fe8ac9b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 314339379}
   lobbyItemParent: {fileID: 1402122344}
   lobbyItemPrefab: {fileID: 6131576530360538250, guid: 28623becdc4ac844a832ec0718727b5b, type: 3}
 --- !u!1 &1006206119
