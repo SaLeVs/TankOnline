@@ -7,13 +7,25 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] private InputReader inputReader;
     [SerializeField] private Transform bodyTransform;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private ParticleSystem tracksParticleSystem;
+    [SerializeField] private ParticleSystem dustCloudParticleSystem;
 
 
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float turningRate = 30f;
+    [SerializeField] private float particleEmisionValue = 10f;
+
+    private ParticleSystem.EmissionModule emissionModule;
     private Vector2 lastMovementInput;
     private float zRotation;
+    private Vector3 previousPos;
+    private const float PARTICLE_STOP_TRESHOLD = 0.005f;
+
+    private void Awake()
+    {
+        emissionModule = dustCloudParticleSystem.emission;
+    }
 
     public override void OnNetworkSpawn()
     {
@@ -48,6 +60,17 @@ public class PlayerMovement : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        if((transform.position - previousPos).sqrMagnitude > PARTICLE_STOP_TRESHOLD)
+        {
+            emissionModule.rateOverTime = particleEmisionValue;
+        }
+        else
+        {
+            emissionModule.rateOverTime = 0;
+        }
+
+        previousPos = transform.position;
+
         if (!IsOwner)
         {
             return;
