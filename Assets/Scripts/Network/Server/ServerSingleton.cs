@@ -20,8 +20,7 @@ public class ServerSingleton : MonoBehaviour
 
             if (instance == null)
             {
-                Debug.LogError("No ServerSingleton in the scene!");
-                return instance;
+                return null;
             }
 
             return instance;
