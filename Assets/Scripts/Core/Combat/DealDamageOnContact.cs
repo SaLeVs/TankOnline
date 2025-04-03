@@ -3,21 +3,26 @@ using UnityEngine;
 
 public class DealDamageOnContact : MonoBehaviour
 {
+    [SerializeField] private Projectile projectile;
     [SerializeField] private int damage = 10;
-    private ulong ownerClientId;
-    public void SetOwner(ulong ownerClientId)
-    {
-        this.ownerClientId = ownerClientId;
-    }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.attachedRigidbody == null) return;
 
-        if(collision.attachedRigidbody.TryGetComponent<NetworkObject>(out NetworkObject networkObject))
+        if(projectile.TeamIndex != -1)
         {
-            if (ownerClientId == networkObject.OwnerClientId) return;
+            if (collision.attachedRigidbody.TryGetComponent<TankPlayer>(out TankPlayer player)
+            {
+                if(player.TeamIndex.Value == projectile.TeamIndex)
+                {
+                    return;
+                }
+            }
         }
+        
 
         if (collision.attachedRigidbody.TryGetComponent<Health>(out Health health))
         {
