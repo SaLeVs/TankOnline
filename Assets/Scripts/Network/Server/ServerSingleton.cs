@@ -35,14 +35,15 @@ public class ServerSingleton : MonoBehaviour
     }
 
 
-    public async Task CreateServer()
+    public async Task CreateServer(NetworkObject playerPrefab)
     {
         await UnityServices.InitializeAsync();
         GameManager = new ServerGameManager(
             ApplicationData.IP(),
             ApplicationData.Port(),
             ApplicationData.QPort(),
-            NetworkManager.Singleton
+            NetworkManager.Singleton,
+            playerPrefab
         );
         // here we are spawning the server and passing all the data that we need to start the server
     }

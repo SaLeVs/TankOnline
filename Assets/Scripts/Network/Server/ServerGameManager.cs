@@ -12,16 +12,16 @@ public class ServerGameManager : IDisposable
     private int queryPort;
     private MatchplayBackfiller backfiller;
     private MultiplayAllocationService multiplayAllocationService;
-    private const string GameSceneName = "Game";
+    
 
     public NetworkServer NetworkServer { get; private set; }
 
-    public ServerGameManager(string serverIP, int serverPort, int queryPort, NetworkManager networkManager) // the different ports are for the game data and other for health for the server analytcs
+    public ServerGameManager(string serverIP, int serverPort, int queryPort, NetworkManager networkManager, NetworkObject playerPrefab) // the different ports are for the game data and other for health for the server analytcs
     {
         this.serverIP = serverIP;
         this.serverPort = serverPort;
         this.queryPort = queryPort;
-        NetworkServer = new NetworkServer(networkManager);
+        NetworkServer = new NetworkServer(networkManager, playerPrefab);
         multiplayAllocationService = new MultiplayAllocationService();
     }
 
@@ -55,7 +55,7 @@ public class ServerGameManager : IDisposable
             return;
         }
 
-        NetworkManager.Singleton.SceneManager.LoadScene(GameSceneName, LoadSceneMode.Single);
+        
     }
 
     private async Task<MatchmakingResults> GetMatchmakerPayLoad()

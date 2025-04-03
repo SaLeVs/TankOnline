@@ -27,7 +27,12 @@ public class HostGameManager : IDisposable
     private string joinCode;
     private string lobbyId;
 
-    
+    private NetworkObject playerPrefab;
+
+    public HostGameManager(NetworkObject playerPrefab)
+    {
+        this.playerPrefab = playerPrefab;
+    }
 
     public async Task StartHostAsysnc()
     {
@@ -81,7 +86,7 @@ public class HostGameManager : IDisposable
             return;
         }
 
-        NetworkServer = new NetworkServer(NetworkManager.Singleton);
+        NetworkServer = new NetworkServer(NetworkManager.Singleton, playerPrefab);
 
         UserData userData = new UserData
         {
