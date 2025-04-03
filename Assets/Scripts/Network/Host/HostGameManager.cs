@@ -34,7 +34,7 @@ public class HostGameManager : IDisposable
         this.playerPrefab = playerPrefab;
     }
 
-    public async Task StartHostAsysnc()
+    public async Task StartHostAsysnc(bool isPrivateLobby)
     {
         try
         {
@@ -65,7 +65,7 @@ public class HostGameManager : IDisposable
         try
         {
             CreateLobbyOptions lobbyOptions = new CreateLobbyOptions();
-            lobbyOptions.IsPrivate = false; // we can add something here for create private lobbies
+            lobbyOptions.IsPrivate = isPrivateLobby; // we can add something here for create private lobbies
             lobbyOptions.Data = new Dictionary<string, DataObject>()
             {
                 { "JoinCode", new DataObject(

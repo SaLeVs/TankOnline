@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TMP_Text matchmakingButtonText;
     [SerializeField] private TMP_InputField joinCodeField;
     [SerializeField] private Toggle teamToggle;
+    [SerializeField] private Toggle privateLobby;
 
     private bool isMatchmaking;
     private bool isCancelling;
@@ -46,7 +47,7 @@ public class MainMenu : MonoBehaviour
         if (isBusy) { return; }
         isBusy = true;
 
-        await HostSingleton.Instance.GameManager.StartHostAsysnc();
+        await HostSingleton.Instance.GameManager.StartHostAsysnc(privateLobby.isOn);
         isBusy = false;
     }
 
