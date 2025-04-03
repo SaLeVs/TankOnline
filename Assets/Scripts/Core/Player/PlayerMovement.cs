@@ -7,7 +7,6 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] private InputReader inputReader;
     [SerializeField] private Transform bodyTransform;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private ParticleSystem tracksParticleSystem;
     [SerializeField] private ParticleSystem dustCloudParticleSystem;
 
 
