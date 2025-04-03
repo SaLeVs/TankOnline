@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Services.Matchmaker.Models;
@@ -12,7 +13,8 @@ public class ServerGameManager : IDisposable
     private int queryPort;
     private MatchplayBackfiller backfiller;
     private MultiplayAllocationService multiplayAllocationService;
-    
+
+    private Dictionary<string, int> teamIdToTeamIndex = new Dictionary<string, int>();
 
     public NetworkServer NetworkServer { get; private set; }
 
@@ -83,7 +85,12 @@ public class ServerGameManager : IDisposable
     private void UserJoined(UserData user)
     {
         Team team = backfiller.GetTeamByUserId(user.userAuthId);
-        Debug.Log($"{user.userAuthId} {team.TeamId}");
+        if(!teamIdToTeamIndex.TryGetValue(team.TeamId, out int teamIndex))
+        {
+            teamIndex = teamIdToTeamIndex.Count;
+            teamIdToTeamIndex.Add(team.TeamId, teamIndex);
+        }
+        user.teamIndex = teamIndex;
 
         backfiller.AddPlayerToMatch(user);
         multiplayAllocationService.AddPlayer();

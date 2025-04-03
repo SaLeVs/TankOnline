@@ -5290,6 +5290,8 @@ MonoBehaviour:
         byte0027: 0
         byte0028: 0
         byte0029: 0
+  TeamIndex:
+    m_InternalValue: 0
 --- !u!114 &3596997903779182848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5575,6 +5577,7 @@ GameObject:
   - component: {fileID: 7311105158148767956}
   - component: {fileID: 2695777334259684120}
   - component: {fileID: 3430729495518637377}
+  - component: {fileID: 7714712896432917063}
   m_Layer: 0
   m_Name: TankTreads
   m_TagString: Untagged
@@ -5738,6 +5741,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.75, y: 2.05}
   m_EdgeRadius: 0
+--- !u!114 &7714712896432917063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577620936535793127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ac9e0519b3c6643b69c96a0135d786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamColouLookUp: {fileID: 11400000, guid: 8ed4e0eb789e2934299fbb93afac7b0f, type: 2}
+  player: {fileID: 6622278022895545987}
+  playerSprites:
+  - {fileID: 8012418574539124153}
+  - {fileID: 402605371066843394}
 --- !u!1 &5584707597679471088
 GameObject:
   m_ObjectHideFlags: 0
