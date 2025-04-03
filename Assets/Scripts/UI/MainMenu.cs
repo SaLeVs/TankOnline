@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TMP_Text matchmakingTime;
     [SerializeField] private TMP_Text matchmakingButtonText;
     [SerializeField] private TMP_InputField joinCodeField;
-
+    [SerializeField] private Toggle teamToggle;
 
     private bool isMatchmaking;
     private bool isCancelling;
@@ -78,7 +78,7 @@ public class MainMenu : MonoBehaviour
         }
         if (isBusy) { return; }
 
-        ClientSingleton.Instance.GameManager.MatchmakeAsync(OnMatchMade);
+        ClientSingleton.Instance.GameManager.MatchmakeAsync(teamToggle.isOn, OnMatchMade);
         matchmakingButtonText.text = "CANCEL";
         matchmakingStatus.text = "Searching...";
         timeInQueue = 0;
