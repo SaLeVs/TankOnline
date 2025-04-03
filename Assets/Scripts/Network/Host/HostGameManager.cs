@@ -22,11 +22,10 @@ public class HostGameManager : IDisposable
     private const string GameSceneName = "Game";
 
     public NetworkServer NetworkServer { get; private set; }
+    public string JoinCode { get; private set; }
 
     private Allocation allocation;
-    private string joinCode;
     private string lobbyId;
-
     private NetworkObject playerPrefab;
 
     public HostGameManager(NetworkObject playerPrefab)
@@ -48,8 +47,8 @@ public class HostGameManager : IDisposable
 
         try
         {
-            joinCode = await Relay.Instance.GetJoinCodeAsync(allocation.AllocationId);
-            Debug.Log($"Join code: {joinCode}");
+            JoinCode = await Relay.Instance.GetJoinCodeAsync(allocation.AllocationId);
+            Debug.Log($"Join code: {JoinCode}");
         }
         catch (System.Exception e)
         {
@@ -70,7 +69,7 @@ public class HostGameManager : IDisposable
             {
                 { "JoinCode", new DataObject(
                 visibility: DataObject.VisibilityOptions.Member,
-                value: joinCode)
+                value: JoinCode)
                 }
             };
 

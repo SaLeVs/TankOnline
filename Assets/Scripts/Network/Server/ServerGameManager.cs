@@ -82,8 +82,12 @@ public class ServerGameManager : IDisposable
 
     private void UserJoined(UserData user)
     {
+        Team team = backfiller.GetTeamByUserId(user.userAuthId);
+        Debug.Log($"{user.userAuthId} {team.TeamId}");
+
         backfiller.AddPlayerToMatch(user);
         multiplayAllocationService.AddPlayer();
+
         if(!backfiller.NeedsPlayers() && backfiller.IsBackfilling)
         {
             _ = backfiller.StopBackfill();

@@ -90,7 +90,7 @@ public class MatchplayBackfiller : IDisposable
         }
 
         MatchProperties.Players.Remove(playerToRemove);
-        MatchProperties.Teams[0].PlayerIds.Remove(userId);
+        GetTeamByUserId(userId).PlayerIds.Remove(userId);
         localDataDirty = true;
 
         return MatchPlayerCount;
@@ -101,6 +101,12 @@ public class MatchplayBackfiller : IDisposable
         return MatchPlayerCount < maxPlayers;
     }
 
+    public Team GetTeamByUserId(string userId)
+    {
+        
+        return MatchProperties.Teams.FirstOrDefault(
+            t => t.PlayerIds.Contains(userId)); // this is a default code
+    }
     private Player GetPlayerById(string userId)
     {
         return MatchProperties.Players.FirstOrDefault(
