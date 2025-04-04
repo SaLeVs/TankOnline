@@ -14,7 +14,7 @@ public class DealDamageOnContact : MonoBehaviour
 
         if(projectile.TeamIndex != -1)
         {
-            if (collision.attachedRigidbody.TryGetComponent<TankPlayer>(out TankPlayer player)
+            if (collision.attachedRigidbody.TryGetComponent<TankPlayer>(out TankPlayer player))
             {
                 if(player.TeamIndex.Value == projectile.TeamIndex)
                 {
