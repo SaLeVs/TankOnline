@@ -18,7 +18,7 @@ public class ClientGameManager : IDisposable
 
     private NetworkClient networkClient;
     private MatchplayMatchmaker matchmaker;
-    private UserData userData;
+    public UserData userData { get; private set; }
 
     public async Task<bool> InitAsync()
     {
